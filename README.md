@@ -5,7 +5,6 @@
 * PHP `7.0+`
 * Phalcon `3.2+`
 
-
 ### how to?
 ```bash
 composer create-project uniondrug/sketch myProject
@@ -18,14 +17,15 @@ composer create-project uniondrug/sketch myProject
 │   ├── Controllers
 │   │   └── ExampleController.php
 │   ├── Models
+│   │   ├─  AbstractModel.php
 │   │   └── Example.php
 │   ├── Services
+│   │   ├─  AbstractService.php
 │   │   └── ExampleService.php
-│   ├── Providers
-│   │   └── ExampleSProvider.php
-│   └── Application.php
+│   └── Providers
+│       └── ExampleProvider.php
 ├── config
-│   └── example.php
+│   └── app.php
 ├── log
 │   └── type
 │       └── date.log
@@ -33,15 +33,7 @@ composer create-project uniondrug/sketch myProject
 │   └── index.php
 ├── tmp
 └── vendor
-    └── uniondrug
-        └── service
-            ├── src
-            │   ├── Exception.php
-            │   ├── Registry.php
-            │   ├── ResponseWriter.php
-            │   ├── ResultReader.php
-            │   └── Types.php
-            └── README.md
+    └── 第三方库
 ```
 
 *Example Composer*
@@ -50,28 +42,32 @@ composer create-project uniondrug/sketch myProject
 
 ```json
 {
-    "name" : "uniondrug/template-service",
-    "description" : "Uniondrug",
-    "keywords" : [
-        "phalcon",
-        "php"
-    ],
-    "license" : "proprietary",
-    "type" : "project",
-    "authors" : [],
-    "require" : {
-        "guzzlehttp/guzzle" : "^6.2",
-        "uniondrug/framework" : "dev-master",
-        "uniondrug/service" : "dev-master",
-        "uniondrug/service-client" : "dev-master",
-        "uniondrug/service-server" : "dev-master"
-    },
-    "autoload" : {
-        "psr-4" : {}
-    },
-    "config" : {
-        "preferred-install" : "dist",
-        "sort-packages" : true
+  "name": "uniondrug/sketch",
+  "description": "Uniondrug Service Application Template",
+  "keywords": ["phalcon", "framework", "php"],
+  "license": "proprietary",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Uniondrug",
+      "email": "xueronni@uniondrug.cn"
     }
+  ],
+  "require": {
+    "guzzlehttp/guzzle" : "^6.2",
+    "uniondrug/framework": "^1.0",
+    "uniondrug/service": "dev-master",
+    "uniondrug/service-client": "dev-master",
+    "uniondrug/service-server": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
 }
 ```

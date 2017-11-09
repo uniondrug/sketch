@@ -3,12 +3,11 @@
  * AbstractService.php
  *
  */
-
 namespace App\Services;
 
 use Phalcon\Di\Injectable;
 
-class AbstractService extends Injectable
+abstract class AbstractService extends Injectable
 {
 
 }

@@ -19,4 +19,4 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 // Boot Application
 $container = new Pails\Container(dirname(__DIR__));
-$container->run(App\Application::class);
+$container->run(Pails\Application::class);
