@@ -11,7 +11,7 @@
     }
   ],
   "require": {
-    "uniondrug/framework": "^1.0"
+    "uniondrug/framework": "^1.1"
   },
   "autoload": {
     "psr-4": {
