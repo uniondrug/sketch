@@ -7,7 +7,7 @@
  * providers: 应用需要的服务注入。
  */
 return [
-    'development' => [
+    'default' => [
         'debug' => true,
         'appName' => 'UniondrugService',
         'providers' => [

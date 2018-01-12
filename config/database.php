@@ -8,7 +8,7 @@
  * connection: 连接参数。
  */
 return [
-    'development' => [
+    'default' => [
         'adapter'         => 'mysql',
         'debug'           => true,
         'useSlave'        => true,

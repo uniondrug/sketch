@@ -13,7 +13,7 @@
  * 比如，在控制器里面： $this->di->getLogger('orders')->info('balabala'); 会将日志记录在 log/orders/ 目录下面。
  */
 return [
-    'development' => [
+    'default' => [
         'splitDir' => false, // 按月分隔目录
     ],
 ];

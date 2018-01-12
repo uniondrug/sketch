@@ -14,7 +14,7 @@
  * 自定义路由的优先级高于默认路由。
  */
 return [
-    'development' => [
+    'default' => [
         '/mm'  => 'orders::list',
         '/mmm' => ['path' => 'orders::list', 'methods' => ['GET']],
     ],
