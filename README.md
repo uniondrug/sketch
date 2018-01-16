@@ -10,7 +10,7 @@
 composer create-project uniondrug/sketch myProject
 ```
 
-*Directory*
+### Directory
 
 ```text
 ├── app
@@ -36,39 +36,33 @@ composer create-project uniondrug/sketch myProject
     └── 第三方库
 ```
 
-*Example Composer*
 
-> composer.json
+### 使用命令行
 
-```json
-{
-  "name": "uniondrug/sketch",
-  "description": "Uniondrug Service Application Template",
-  "keywords": ["phalcon", "framework", "php"],
-  "license": "proprietary",
-  "type": "project",
-  "authors": [
-    {
-      "name": "Uniondrug R&D Team",
-      "email": "dev@uniondrug.cn"
-    }
-  ],
+引入命令行工具（按需）
+
+```
+$ composer require uniondrug/console
+$ php console config
+```
+
+### 使用Swoole
+
+引入swoole应用服务器（按需）
+
+```
+$ composer require uniondrug/server
+$ cp vendor/uniondurg/server/server.php.example config/server.php
+$ cp vendor/uniondurg/server/exception.php.example config/exception.php
+$ php server start
+```
+
+备注：如果出现包冲突，手工编辑项目的`composer.json`，将依赖`fastd/swoole`显式定义在`require`部分，然后执行`composer update`：
+```
   "require": {
-    "guzzlehttp/guzzle" : "^6.2",
-    "uniondrug/framework": "^1.0",
-    "uniondrug/service": "dev-master",
-    "uniondrug/service-client": "dev-master",
-    "uniondrug/service-server": "dev-master"
+    ...
+    "fastd/swoole": "^2.2@beta",
+    "uniondrug/server": "^1.0",
+    ...
   },
-  "autoload": {
-    "psr-4": {
-      "App\\": "app/"
-    }
-  },
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true,
-    "bin-dir": ""
-  }
-}
 ```
