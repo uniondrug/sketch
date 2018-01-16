@@ -11,7 +11,7 @@ return [
     'default' => [
         'adapter'         => 'mysql',
         'debug'           => true,
-        'useSlave'        => true,
+        'useSlave'        => false,
         'connection'      => [
             'host'     => 'localhost',
             'port'     => 3306,

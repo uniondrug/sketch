@@ -49,8 +49,8 @@ composer create-project uniondrug/sketch myProject
   "type": "project",
   "authors": [
     {
-      "name": "Uniondrug",
-      "email": "xueronni@uniondrug.cn"
+      "name": "Uniondrug R&D Team",
+      "email": "dev@uniondrug.cn"
     }
   ],
   "require": {
@@ -67,7 +67,8 @@ composer create-project uniondrug/sketch myProject
   },
   "config": {
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "bin-dir": ""
   }
 }
 ```
