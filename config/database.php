@@ -12,6 +12,7 @@ return [
         'adapter'         => 'mysql',
         'debug'           => true,
         'useSlave'        => false,
+        'interval'        => 0, // Swoole 容器运行时，数据库心跳保持间隔
         'connection'      => [
             'host'     => 'localhost',
             'port'     => 3306,

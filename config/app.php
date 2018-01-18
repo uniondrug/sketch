@@ -8,10 +8,12 @@
  */
 return [
     'default' => [
-        'debug' => true,
-        'appName' => 'UniondrugService',
-        'providers' => [
+        'debug'               => true, // 调试开关
+        'appName'             => 'UniondrugService', // 应用名称
+        'useAnnotationRouter' => false, // 是否启用注解路由
+        // 服务注册入口
+        'providers'           => [
             \App\Providers\SimpleProvider::class,
-        ]
+        ],
     ],
 ];
