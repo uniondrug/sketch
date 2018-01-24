@@ -8,7 +8,7 @@
  * connection: 连接参数。
  */
 return [
-    'default' => [
+    'default'    => [
         'adapter'         => 'mysql',
         'debug'           => true,
         'useSlave'        => false,
@@ -18,7 +18,7 @@ return [
             'port'     => 3306,
             'username' => 'root',
             'password' => '',
-            'dbname'   => 'uniondrug',
+            'dbname'   => 'test',
             'charset'  => 'utf8',
         ],
         'slaveConnection' => [
@@ -26,8 +26,11 @@ return [
             'port'     => 3306,
             'username' => 'root',
             'password' => '',
-            'dbname'   => 'uniondrug',
+            'dbname'   => 'test',
             'charset'  => 'utf8',
         ],
+    ],
+    'production' => [
+        'debug' => false,
     ],
 ];

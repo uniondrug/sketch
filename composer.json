@@ -12,9 +12,10 @@
   ],
   "require": {
     "uniondrug/framework": "^1.10",
-    "uniondrug/service" : "~1.4",
-    "uniondrug/service-client" : "~1.4",
-    "uniondrug/service-server" : "~1.2"
+    "uniondrug/middleware": "^1.0",
+    "uniondrug/service": "~1.4",
+    "uniondrug/service-client": "~1.4",
+    "uniondrug/service-server": "~1.2"
   },
   "autoload": {
     "psr-4": {

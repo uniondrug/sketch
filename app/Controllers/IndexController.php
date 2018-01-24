@@ -3,19 +3,30 @@
  * IndexController.php
  *
  */
+
 namespace App\Controllers;
 
-use Phalcon\Mvc\Controller;
+use Pails\Controllers\ServiceServerController;
 
-class IndexController extends Controller
+/**
+ * Class IndexController
+ * @Middleware("cors")
+ *
+ * @package App\Controllers
+ */
+class IndexController extends ServiceServerController
 {
     public function indexAction()
     {
-        return $this->response->setJsonContent(['msg' => 'hello']);
+        return $this->serviceServer->withSuccess()->response();
     }
 
+    /**
+     * @Route("/show")
+     * @return \Phalcon\Http\Response
+     */
     public function showAction()
     {
-        return $this->response->setJsonContent(['msg' => 'show']);
+        return $this->serviceServer->withObject(['hello' => 'world'])->response();
     }
 }

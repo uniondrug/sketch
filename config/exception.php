@@ -7,7 +7,7 @@ return [
         'response' => function (Throwable $e) {
             return [
                 'error'    => $e->getMessage(),
-                'errno'    => $e->getCode() ?: '-1',
+                'errno'    => (string) $e->getCode() ?: '-1',
                 'dataType' => 'ERROR',
             ];
         },
