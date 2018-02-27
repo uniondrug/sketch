@@ -10,11 +10,19 @@ return [
     'default'    => [
         'debug'               => true, // 调试开关
         'appName'             => 'UniondrugService', // 应用名称
-        'useAnnotationRouter' => false, // 是否启用注解路由
+        'appVersion'          => '1.0.0',
+        'useAnnotationRouter' => true, // 是否启用注解路由
         // 服务注册入口
         'providers'           => [
             \App\Providers\SimpleProvider::class,
-            \UniondrugMiddleware\MiddlewareServiceProvider::class,
+            \Uniondrug\Service\ServiceServiceProvider::class,
+            /**
+             * 去掉注册，如果需要用这些服务的话
+             */
+//            \Uniondrug\Middleware\MiddlewareServiceProvider::class,
+//            \Uniondrug\Cache\CacheServiceProvider::class,
+//            \Uniondrug\Validation\ValidationServiceProvider::class,
+//            \Uniondrug\Register\RegisterClientServiceProvider::class,
         ],
     ],
     'production' => [

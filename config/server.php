@@ -13,7 +13,7 @@
 return [
     'default' => [
         'host'      => 'http://0.0.0.0:9527',
-        'class'     => \UniondrugServer\Servitization\Server\HTTPServer::class,
+        'class'     => \Uniondrug\Server\Servitization\Server\HTTPServer::class,
         'options'   => [
             'pid_file'        => __DIR__ . '/../tmp/pid/server.pid',
             'worker_num'      => 1,
@@ -23,7 +23,7 @@ return [
         ],
         'listeners' => [
             [
-                'class' => \UniondrugServer\Servitization\Server\ManagerServer::class,
+                'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
                 'host'  => 'tcp://0.0.0.0:9530',
             ],
         ],

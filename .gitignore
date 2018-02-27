@@ -5,3 +5,4 @@
 /composer.lock
 /vendor
 !**/.gitkeep
+php_errors.log

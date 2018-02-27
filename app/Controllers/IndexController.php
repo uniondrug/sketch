@@ -6,11 +6,10 @@
 
 namespace App\Controllers;
 
-use Pails\Controllers\ServiceServerController;
+use Uniondrug\Framework\Controllers\ServiceServerController;
 
 /**
  * Class IndexController
- * @Middleware("cors")
  *
  * @package App\Controllers
  */

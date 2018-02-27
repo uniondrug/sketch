@@ -2,7 +2,7 @@
 
 > UnionDrug微服务`MicroService`基础框架。
 
-* PHP `7.0+`
+* PHP `7.1+`
 * Phalcon `3.2+`
 
 ### how to?
@@ -22,6 +22,8 @@ composer create-project uniondrug/sketch myProject
 │   ├── Services
 │   │   ├─  AbstractService.php
 │   │   └── ExampleService.php
+│   ├── Logics
+│   ├── Structs
 │   └── Providers
 │       └── ExampleProvider.php
 ├── config
@@ -55,14 +57,4 @@ $ composer require uniondrug/server
 $ cp vendor/uniondurg/server/server.php.example config/server.php
 $ cp vendor/uniondurg/server/exception.php.example config/exception.php
 $ php server start
-```
-
-备注：如果出现包冲突，手工编辑项目的`composer.json`，将依赖`fastd/swoole`显式定义在`require`部分，然后执行`composer update`：
-```
-  "require": {
-    ...
-    "fastd/swoole": "^2.2@beta",
-    "uniondrug/server": "^1.0",
-    ...
-  },
 ```
