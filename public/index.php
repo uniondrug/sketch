@@ -18,5 +18,9 @@ if (!$phalconVersion || version_compare($phalconVersion, '3.2.0') < 0) {
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // Boot Application
-$container = new Pails\Container(dirname(__DIR__));
-$container->run(Pails\Application::class);
+try {
+    $container = new Uniondrug\Framework\Container(dirname(__DIR__));
+    $container->run(Uniondrug\Framework\Application::class);
+} catch (\Throwable $e) {
+    echo $e->getMessage();
+}
