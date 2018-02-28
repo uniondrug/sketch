@@ -11,21 +11,30 @@
  */
 
 return [
-    'default' => [
-        'host'      => 'http://0.0.0.0:9527',
-        'class'     => \Uniondrug\Server\Servitization\Server\HTTPServer::class,
-        'options'   => [
+    'default'     => [
+        'host'       => 'http://0.0.0.0:9527',
+        'class'      => \Uniondrug\Server\Servitization\Server\HTTPServer::class,
+        'options'    => [
             'pid_file'        => __DIR__ . '/../tmp/pid/server.pid',
             'worker_num'      => 1,
             'task_worker_num' => 1,
         ],
-        'processes' => [
+        'autoreload' => false,
+        'processes'  => [
         ],
-        'listeners' => [
+        'listeners'  => [
             [
                 'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
                 'host'  => 'tcp://0.0.0.0:9530',
             ],
         ],
+    ],
+    'development' => [
+        'autoreload' => true,
+        'processes'  => [
+            \Uniondrug\Server\Processes\ReloadProcess::class,
+        ],
+    ],
+    'pruduction'  => [
     ],
 ];
