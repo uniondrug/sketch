@@ -13,14 +13,8 @@
   "require": {
     "uniondrug/framework": "^2.0",
     "uniondrug/service": "^2.0",
-    "uniondrug/common": "^2.0",
-    "uniondrug/register": "^2.0",
     "uniondrug/validation": "^2.0",
-    "uniondrug/structs": "^2.0",
-    "uniondrug/cache": "^2.0",
-    "uniondrug/middleware": "^2.0",
-    "uniondrug/console": "^2.0",
-    "uniondrug/server": "^2.0"
+    "uniondrug/structs": "^2.0"
   },
   "autoload": {
     "psr-4": {
