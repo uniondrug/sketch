@@ -12,10 +12,13 @@
  *  '/my/route' => ['path' => 'controller::action', 'methods' => ['GET', 'POST']]  这个方法可以限制请求的HTTP方法
  *
  * 自定义路由的优先级高于默认路由。
+ *
+ * 举例：
+ *      '/mm'  => 'orders::list',
+ *      '/mmm' => ['path' => 'orders::list', 'methods' => ['GET']],
  */
 return [
     'default' => [
-        '/mm'  => 'orders::list',
-        '/mmm' => ['path' => 'orders::list', 'methods' => ['GET']],
+
     ],
 ];

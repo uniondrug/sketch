@@ -16,13 +16,15 @@ return [
         'providers'           => [
             \App\Providers\SimpleProvider::class,
             \Uniondrug\Service\ServiceServiceProvider::class,
+            \Uniondrug\HttpClient\HttpClientServiceProvider::class,
+            \Uniondrug\Middleware\MiddlewareServiceProvider::class,
+            \Uniondrug\Validation\ValidationServiceProvider::class,
             /**
              * 去掉注册，如果需要用这些服务的话
              */
-//            \Uniondrug\Middleware\MiddlewareServiceProvider::class,
-//            \Uniondrug\Cache\CacheServiceProvider::class,
-//            \Uniondrug\Validation\ValidationServiceProvider::class,
-//            \Uniondrug\Register\RegisterClientServiceProvider::class,
+            #\Uniondrug\Cache\CacheServiceProvider::class,
+            #\Uniondrug\Register\RegisterClientServiceProvider::class,
+            #\Uniondrug\Trace\TraceClientServiceProvider::class,
         ],
     ],
     'production' => [

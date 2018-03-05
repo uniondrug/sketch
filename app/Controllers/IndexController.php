@@ -6,18 +6,26 @@
 
 namespace App\Controllers;
 
+use App\Structs\UserStruct;
 use Uniondrug\Framework\Controllers\ServiceServerController;
 
 /**
  * Class IndexController
  *
  * @package App\Controllers
+ * @RoutePrefix("")
  */
 class IndexController extends ServiceServerController
 {
+    /**
+     * @return \Phalcon\Http\Response
+     * @throws \Uniondrug\Validation\Exceptions\ParamException
+     * @Route("/")
+     */
     public function indexAction()
     {
-        return $this->serviceServer->withSuccess()->response();
+        $user = $this->validationService->checkInput($this->request->get(), UserStruct::class);
+        return $this->serviceServer->withObject($user->toArray())->response();
     }
 
     /**

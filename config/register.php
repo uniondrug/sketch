@@ -10,6 +10,6 @@ return [
     'default' => [
         'timeout' => 30,
         'host'    => '127.0.0.1',
-        'port'    => 9530,
+        'port'    => 9880,
     ],
 ];

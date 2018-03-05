@@ -5,9 +5,9 @@
  */
 return [
     'default' => [
-        'service' => 'http://127.0.0.1:9527/collector',
+        'service' => 'http://127.0.0.1:8888/collector',
         'host'    => '127.0.0.1',
-        'port'    => 9530,
+        'port'    => 9888,
         'timeout' => 10,
     ],
 ];

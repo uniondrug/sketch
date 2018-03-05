@@ -5,7 +5,7 @@
  */
 namespace App\Services;
 
-use Phalcon\Di\Injectable;
+use Uniondrug\Framework\Injectable;
 
 abstract class AbstractService extends Injectable
 {

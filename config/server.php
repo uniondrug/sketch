@@ -2,6 +2,8 @@
 /**
  * Swoole Server 配置文件。当应用以Swoole方式运行时需要。
  *
+ * 如果项目用Swoole运行，首先请配置服务的IP和端口，避免启动时与其他项目冲突。
+ *
  * 用法：
  *
  *  $ composer require uniondrug/server
