@@ -27,7 +27,7 @@ return [
         'listeners'  => [
             [
                 'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
-                'host'  => 'tcp://0.0.0.0:9080',
+                'host'  => 'tcp://0.0.0.0:7080',
             ],
         ],
     ],
