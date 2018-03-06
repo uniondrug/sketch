@@ -14,7 +14,7 @@
 
 return [
     'default'     => [
-        'host'       => 'http://0.0.0.0:9527',
+        'host'       => 'http://0.0.0.0:8080',
         'class'      => \Uniondrug\Server\Servitization\Server\HTTPServer::class,
         'options'    => [
             'pid_file'        => __DIR__ . '/../tmp/pid/server.pid',
@@ -27,7 +27,7 @@ return [
         'listeners'  => [
             [
                 'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
-                'host'  => 'tcp://0.0.0.0:9530',
+                'host'  => 'tcp://0.0.0.0:9080',
             ],
         ],
     ],

@@ -14,17 +14,17 @@ return [
         'useAnnotationRouter' => true, // 是否启用注解路由
         // 服务注册入口
         'providers'           => [
-            \App\Providers\SimpleProvider::class,
-            \Uniondrug\Service\ServiceServiceProvider::class,
-            \Uniondrug\HttpClient\HttpClientServiceProvider::class,
-            \Uniondrug\Middleware\MiddlewareServiceProvider::class,
-            \Uniondrug\Validation\ValidationServiceProvider::class,
+            \App\Providers\SimpleProvider::class, // 服务提供者demo
+            \Uniondrug\Service\ServiceServiceProvider::class, // REST的服务端和客户端工具
+            \Uniondrug\HttpClient\HttpClientServiceProvider::class, // HTTPClient的封装
+            \Uniondrug\Middleware\MiddlewareServiceProvider::class, // 中间件
+            \Uniondrug\Validation\ValidationServiceProvider::class, // 验证器
             /**
              * 去掉注册，如果需要用这些服务的话
              */
-            #\Uniondrug\Cache\CacheServiceProvider::class,
-            #\Uniondrug\Register\RegisterClientServiceProvider::class,
-            #\Uniondrug\Trace\TraceClientServiceProvider::class,
+            #\Uniondrug\Cache\CacheServiceProvider::class, // 缓存服务
+            #\Uniondrug\Register\RegisterClientServiceProvider::class, // 注册服务客户端
+            #\Uniondrug\Trace\TraceClientServiceProvider::class, // 链路跟踪客户端
         ],
     ],
     'production' => [
