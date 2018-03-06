@@ -10,7 +10,7 @@ return [
     'default' => [
         'timeout' => 30,
         'host'    => '127.0.0.1',
-        'port'    => 9880,
+        'port'    => 9080,
     ],
     'production' => [
     ]
