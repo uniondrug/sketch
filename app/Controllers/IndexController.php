@@ -1,39 +1,22 @@
 <?php
 /**
- * IndexController.php
- *
+ * @author wsfuyibing <websearch@163.com>
+ * @date 2018-03-19
  */
-
 namespace App\Controllers;
 
-use App\Structs\UserStruct;
-use Uniondrug\Framework\Controllers\ServiceServerController;
-
 /**
- * Class IndexController
- *
+ * Default Route Controller
  * @package App\Controllers
  * @RoutePrefix("")
  */
-class IndexController extends ServiceServerController
+class IndexController extends Controller
 {
     /**
-     * @return \Phalcon\Http\Response
-     * @throws \Uniondrug\Validation\Exceptions\ParamException
      * @Route("/")
      */
     public function indexAction()
     {
-        $user = $this->validationService->checkInput($this->request->get(), UserStruct::class);
-        return $this->serviceServer->withObject($user->toArray())->response();
-    }
-
-    /**
-     * @Route("/show")
-     * @return \Phalcon\Http\Response
-     */
-    public function showAction()
-    {
-        return $this->serviceServer->withObject(['hello' => 'world'])->response();
+        return 'hello world!';
     }
 }
