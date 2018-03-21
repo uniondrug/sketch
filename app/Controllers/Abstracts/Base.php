@@ -14,7 +14,7 @@ use Phalcon\Mvc\Controller as PhalconController;
  * 2. 导入`ServiceTrait`用于对IDE的Service友好支持(如: $this->exampleService 等价于 new ExampleService())
  * @package App\Controllers
  */
-abstract class Controller extends PhalconController
+abstract class Base extends PhalconController
 {
     /**
      * 导入IDE定义
