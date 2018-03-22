@@ -12,12 +12,13 @@
 ### 允许与严禁
 
 1. 允许
-    1. DB事务块
-        1. begin()
-        1. commit()
-        1. rollback()
+    1. DB事务块, 细粒度在Service中实现, 分发到逻辑层进行事务控制
+        1. **begin**() - 开启一组事务/$this-db->begin()
+        1. **commit**() - 提交一组事务/$this->db->commit()
+        1. **rollback**() - 回滚一组事务/$this->db->rollback()
+    1. Model字段读, 如 $id = $model->id
 1. 严禁
-    1. DB读与写操作
+    1. DB读与写操作, 归口到Service中
         1. Model - find/findFirst/save/insert/update/delete()
         1. Query - 编写SQL查询
 
