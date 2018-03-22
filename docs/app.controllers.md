@@ -9,6 +9,19 @@
     └── IndexController.php
 ```
 
+### 允许与严禁
+
+1. 允许
+    1. DB事务块
+        1. begin()
+        1. commit()
+        1. rollback()
+1. 严禁
+    1. DB读与写操作
+        1. Model - find/findFirst/save/insert/update/delete()
+        1. Query - 编写SQL查询
+
+
 
 ### 抽像
 
