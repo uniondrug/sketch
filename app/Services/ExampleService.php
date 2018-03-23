@@ -21,9 +21,12 @@ class ExampleService extends Service
         $model = new Example();
         $model->id = $struct->id;
         $model->name = $struct->name;
-        if ($model->create()){
-            return $model;
-        }
-        throw new Error(Code::FAILURE_CREATE, "添加 %d 号数据失败", $struct->id);
+        return $model;
+        // example with no database connection, and
+        // follow codes ignored
+        // if ($model->create()){
+        //     return $model;
+        // }
+        // throw new Error(Code::FAILURE_CREATE, "添加 %d 号数据失败", $struct->id);
     }
 }
