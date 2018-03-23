@@ -9,6 +9,8 @@ use App\Models\Abstracts\Model;
 
 /**
  * 每1个Model对应一张数据表
+ * @property int $id
+ * @property string $name
  * @package App\Models
  */
 class Example extends Model

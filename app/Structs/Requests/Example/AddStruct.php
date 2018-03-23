@@ -8,19 +8,17 @@ use Uniondrug\Structs\Struct;
 
 /**
  * @package App\Structs
- * @property string $lastLogin
  */
 class AddStruct extends Struct
 {
     /**
-     * 用户名，读写
-     * @var string
-     * @Validator(type=string, required=true, options={min: 3, max: 10})
+     * @var int
+     * @Validator(type=int, options={min:1,max:10})
      */
-    public $username;
+    public $id;
     /**
      * 只读属性
      * @var string
      */
-    protected $lastLogin;
+    public $name;
 }

@@ -5,18 +5,31 @@
  */
 namespace App\Controllers;
 
+use App\Controllers\Abstracts\Base;
+use App\Logics\Example\AddLogic;
+use App\Structs\Requests\Example\AddStruct;
+
 /**
- * Default Route Controller
  * @package App\Controllers
- * @RoutePrefix("")
+ * @RoutePrefix("/")
  */
-class IndexController extends Controller
+class IndexController extends Base
 {
     /**
      * @Route("/")
      */
     public function indexAction()
     {
-        return 'hello world!';
+        // 1. build input payload
+        $payload = [];
+
+        // 2. build input struct
+        $struct = AddStruct::factory($payload);
+
+        // 3. call runtime logic
+        $result = AddLogic::factory($struct);
+
+        // 4. response
+        return $this->serviceServer->withObject($result)->response();
     }
 }

@@ -5,15 +5,13 @@
  */
 namespace App\Structs\Results\Example;
 
-use Uniondrug\Structs\ListStruct;
+use App\Structs\Traits\ExampleTrait;
+use Uniondrug\Structs\Struct;
 
 /**
  * @package App\Structs\Results
  */
-class RowsResult extends ListStruct
+class Row extends Struct
 {
-    /**
-     * @var Row[]
-     */
-    public $body;
+    use ExampleTrait;
 }

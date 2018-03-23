@@ -6,6 +6,7 @@
 namespace App\Logics\Example;
 
 use App\Logics\Abstracts\Logic;
+use App\Structs\Results\Example\Row;
 
 class AddLogic extends Logic
 {
@@ -15,6 +16,7 @@ class AddLogic extends Logic
     function run($payload)
     {
         // 业务代码
-        return [];
+        $data = [];
+        return Row::factory($data);
     }
 }

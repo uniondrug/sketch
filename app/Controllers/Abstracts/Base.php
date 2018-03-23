@@ -6,7 +6,7 @@
 namespace App\Controllers\Abstracts;
 
 use App\Services\Abstracts\ServiceTrait;
-use Phalcon\Mvc\Controller as PhalconController;
+use Uniondrug\Framework\Controllers\ServiceServerController;
 
 /**
  * 控制器基类
@@ -14,7 +14,7 @@ use Phalcon\Mvc\Controller as PhalconController;
  * 2. 导入`ServiceTrait`用于对IDE的Service友好支持(如: $this->exampleService 等价于 new ExampleService())
  * @package App\Controllers
  */
-abstract class Base extends PhalconController
+abstract class Base extends ServiceServerController
 {
     /**
      * 导入IDE定义

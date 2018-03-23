@@ -5,7 +5,10 @@
  */
 namespace App\Services\Abstracts;
 
+use App\Services\ExampleService;
+
 /**
+ * @property ExampleService $exampleService
  * @package App\Services\Abstracts
  */
 trait ServiceTrait
