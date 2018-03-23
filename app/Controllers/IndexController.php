@@ -21,15 +21,15 @@ class IndexController extends Base
     public function indexAction()
     {
         // 1. build input payload
-        $payload = [];
+        //    $payload = $this->request->getJsonRawBody();
+        $payload = new \stdClass();
+        $payload->id = 10001;
+        $payload->name = 'payload name';
 
-        // 2. build input struct
-        $struct = AddStruct::factory($payload);
+        // 2. call runtime logic
+        $result = AddLogic::factory($payload);
 
-        // 3. call runtime logic
-        $result = AddLogic::factory($struct);
-
-        // 4. response
-        return $this->serviceServer->withObject($result)->response();
+        // 3. response
+        return $this->serviceServer->withStruct($result);
     }
 }

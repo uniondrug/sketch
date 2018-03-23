@@ -13,7 +13,7 @@ class AddStruct extends Struct
 {
     /**
      * @var int
-     * @Validator(type=int, options={min:1,max:10})
+     * @Validators(type=int,options={min:1,max:10})
      */
     public $id;
     /**

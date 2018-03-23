@@ -6,6 +6,7 @@
 namespace App\Logics\Example;
 
 use App\Logics\Abstracts\Logic;
+use App\Structs\Requests\Example\AddStruct;
 use App\Structs\Results\Example\Row;
 
 class AddLogic extends Logic
@@ -16,7 +17,8 @@ class AddLogic extends Logic
     function run($payload)
     {
         // 业务代码
-        $data = [];
-        return Row::factory($data);
+        $struct = AddStruct::factory($payload);
+        $model = $this->exampleService->add($struct);
+        return Row::factory($model);
     }
 }
