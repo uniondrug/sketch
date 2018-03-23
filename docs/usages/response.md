@@ -9,8 +9,8 @@
 
 1. 开放
     1. withStruct(StructInterface $struct)
+    1. withError(string $error, int $errno = 1)
 1. 废弃 / deprecated
-    1. withError()
     1. withList()
     1. withObject()
     1. withPaging()
