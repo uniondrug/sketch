@@ -2,7 +2,7 @@
 
 > Sketch为项目初始模板, 初始化时即自动创建了必须的依赖包
 
-
+![image](./assets/layer.png)
 
 ### 用法与参考
 

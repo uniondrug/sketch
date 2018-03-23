@@ -51,3 +51,10 @@ class SimpleProvider implements ServiceProviderInterface
 ```
 
 
+
+### 引入IDE支持
+
+1. Services
+1. Logics
+1. Controllers
+
