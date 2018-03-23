@@ -14,12 +14,19 @@ return [
         'useAnnotationRouter' => true, // 是否启用注解路由
         // 服务注册入口
         'providers'           => [
-            \App\Providers\SimpleProvider::class,
+            /**
+             * 框架服务
+             */
+            \Uniondrug\Structs\StructManagerServiceProvider::class,
             \Uniondrug\Service\ServiceServiceProvider::class,
             \Uniondrug\HttpClient\HttpClientServiceProvider::class,
             \Uniondrug\Middleware\MiddlewareServiceProvider::class,
             \Uniondrug\Validation\ValidationServiceProvider::class,
-            \Uniondrug\Structs\StructManagerServiceProvider::class,
+
+            /**
+             * 应用服务
+             */
+            \App\Providers\SimpleProvider::class,
         ],
     ],
     'production' => [

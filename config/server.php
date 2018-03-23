@@ -18,7 +18,7 @@ return [
         'class'      => \Uniondrug\Server\Servitization\Server\HTTPServer::class,
         'options'    => [
             'pid_file'        => __DIR__ . '/../tmp/pid/server.pid',
-            'worker_num'      => 1,
+            'worker_num'      => 2,
             'task_worker_num' => 1,
         ],
         'autoreload' => false,
@@ -37,6 +37,17 @@ return [
             \Uniondrug\Server\Processes\ReloadProcess::class,
         ],
     ],
-    'pruduction'  => [
+    'production'  => [
+        'host'      => 'http://0.0.0.0:8080',
+        'options'   => [
+            'worker_num'      => 8,
+            'task_worker_num' => 2,
+        ],
+        'listeners' => [
+            [
+                'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
+                'host'  => 'tcp://0.0.0.0:7080',
+            ],
+        ],
     ],
 ];

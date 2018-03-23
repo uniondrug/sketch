@@ -15,8 +15,10 @@
 return [
     'default'    => [
         'splitDir' => false, // 按月分隔目录
+        'level'    => \Phalcon\Logger::DEBUG,
     ],
     'production' => [
         'splitDir' => true,
+        'level'    => \Phalcon\Logger::INFO,
     ],
 ];
