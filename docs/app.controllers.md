@@ -21,6 +21,7 @@
     1. DB读与写操作, 归口到Service中
         1. Model - find/findFirst/save/insert/update/delete()
         1. Query - 编写SQL查询
+    1. Model赋值, 如 $model->column = 'value'
 
 
 
