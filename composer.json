@@ -16,6 +16,7 @@
     "uniondrug/middleware": "^2.0",
     "uniondrug/register": "^2.0",
     "uniondrug/service": "^2.0",
+    "uniondrug/service-sdk": "^1.0",
     "uniondrug/structs": "^2.0",
     "uniondrug/trace": "^2.0",
     "uniondrug/validation": "^2.0"
