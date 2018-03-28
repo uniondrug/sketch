@@ -9,7 +9,7 @@
 return [
     'default'    => [
         'debug'               => true, // 调试开关
-        'appName'             => 'UniondrugService', // 应用名称
+        'appName'             => 'UniondrugSketch', // 应用名称
         'appVersion'          => '1.0.0',
         'useAnnotationRouter' => true, // 是否启用注解路由
         // 服务注册入口
@@ -17,12 +17,10 @@ return [
             /**
              * 框架服务
              */
-            \Uniondrug\Structs\StructManagerServiceProvider::class,
             \Uniondrug\Service\ServiceServiceProvider::class,
             \Uniondrug\HttpClient\HttpClientServiceProvider::class,
             \Uniondrug\Middleware\MiddlewareServiceProvider::class,
             \Uniondrug\Validation\ValidationServiceProvider::class,
-
             /**
              * 应用服务
              */
