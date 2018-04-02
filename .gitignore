@@ -2,6 +2,7 @@
 /.idea
 /log/*
 /tmp/*
+!/tmp/pid
 /composer.lock
 /vendor
 !**/.gitkeep

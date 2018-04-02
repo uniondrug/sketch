@@ -15,6 +15,7 @@
     "uniondrug/http-client": "^2.0",
     "uniondrug/middleware": "^2.0",
     "uniondrug/register": "^2.0",
+    "uniondrug/server": "^2.6",
     "uniondrug/service": "^2.0",
     "uniondrug/service-sdk": "^1.0",
     "uniondrug/structs": "^2.0",
