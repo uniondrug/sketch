@@ -21,6 +21,7 @@ return [
             \Uniondrug\HttpClient\HttpClientServiceProvider::class, // httpClient服务
             \Uniondrug\Middleware\MiddlewareServiceProvider::class, // 中间件服务
             \Uniondrug\Validation\ValidationServiceProvider::class, // 验证器服务
+            \Uniondrug\ServiceSdk\SdkServiceProvider::class, // SDK 服务
 
             /**
              * 应用服务
