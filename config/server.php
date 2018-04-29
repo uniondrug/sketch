@@ -23,12 +23,24 @@ return [
         ],
         'autoreload' => false,
         'processes'  => [
+            /**
+             * 定时任务进程，需要时开启
+             */
+            //\Uniondrug\Crontab\Processes\ExecProcess::class,
+            //\Uniondrug\Crontab\Processes\ManagerProcess::class,
         ],
         'listeners'  => [
             [
                 'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
                 'host'  => 'tcp://0.0.0.0:7080',
             ],
+            /**
+             * TCP方式服务调用
+             */
+//            [
+//                'class' => \Uniondrug\Server\Servitization\Server\TCPServer::class,
+//                'host'  => 'tcp://0.0.0.0:9080',
+//            ],
         ],
     ],
     'development' => [

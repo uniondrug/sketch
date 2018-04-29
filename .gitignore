@@ -9,3 +9,5 @@
 php_errors.log
 /server
 /console
+/.env
+/tmp/pid/server.pid

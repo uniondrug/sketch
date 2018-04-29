@@ -10,20 +10,44 @@
 
 namespace App\Providers;
 
-use App\Services\ExampleService;
-use Uniondrug\Framework\Services\ServiceProvider;
-use Uniondrug\ServiceSdk\ServiceSdk;
+use Phalcon\Di\ServiceProviderInterface;
+use Phalcon\Text;
 
 /**
  * @package App\Providers
  */
-class AppServiceProvider extends ServiceProvider
+class AppServiceProvider implements ServiceProviderInterface
 {
-    public function bootstrap(\Phalcon\DiInterface $di)
+    /**
+     * @param \Phalcon\DiInterface|\Uniondrug\Framework\Container $di
+     */
+    public function register(\Phalcon\DiInterface $di)
     {
-        // service sdk usage.
-        $di->setShared('exampleService', function () {
-            return new ExampleService();
-        });
+        // Register services
+        $this->registerServices($di);
+
+        // Other things
+    }
+
+    /**
+     * 自动注册Services目录下的服务
+     *
+     * @param \Phalcon\DiInterface|\Uniondrug\Framework\Container $di
+     */
+    public function registerServices(\Phalcon\DiInterface $di)
+    {
+        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($di->appPath() . DIRECTORY_SEPARATOR . 'Services'),
+            \RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($iterator as $item) {
+            if (Text::endsWith($item, 'Service.php', false)) {
+                $name = str_replace([$di->appPath() . DIRECTORY_SEPARATOR . 'Services' . DIRECTORY_SEPARATOR, '.php'], '', $item);
+                if ($name) {
+                    $name = str_replace(DIRECTORY_SEPARATOR, '\\', $name);
+                    $serviceBaseName = basename($item, '.php');
+                    $serviceClassName = 'App\\Services\\' . $name;
+                    $di->setShared(lcfirst($serviceBaseName), $serviceClassName);
+                }
+            }
+        }
     }
 }
