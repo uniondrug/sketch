@@ -8,7 +8,7 @@
 return [
     'default'    => [
         'timeout' => 30,
-        'service' => 'http://127.0.0.1:8081',
+        'service' => 'http://127.0.0.1:8082',
     ],
     'production' => [
     ],
