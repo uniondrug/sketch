@@ -3,21 +3,26 @@
  * 调用链跟踪服务器设置
  *
  * HTTP方式的采集：
- * service: 采集API的完整路径，可以是 tcp://ip:port or http://ip:port，也可是一个在服务中心注册的服务，比如：trace
+ * service: 采集API的完整路径
+ *
+ * TCP方式的采集：
+ * host: 服务器地址
+ * port: 服务器端口
+ *
+ * 上面两个方式都配置，会优先使用TCP方式
+ *
  * timeout: 超时时间
  */
 return [
-    'default' => [
+    'default'    => [
+        'enable'  => true,
+        'service' => 'http://trace.module.dev.turboradio.cn',
         'timeout' => 30,
-        'service' => 'http://127.0.0.1:8081',
     ],
-    'development' => [
-        'service' => 'http://trace.module.dev.turboradio.cn:8081',
-    ],
-    'testing' => [
-        'service' => 'http://trace.module.test.turboradio.cn:8081',
+    'testing'    => [
+        'service' => 'http://trace.module.test.turboradio.cn',
     ],
     'production' => [
-        'service' => 'http://trace.module.uniondrug.cn:8081',
-    ]
+        'service' => 'http://trace.module.uniondrug.cn',
+    ],
 ];

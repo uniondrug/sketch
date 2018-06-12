@@ -2,8 +2,6 @@
 /**
  * Swoole Server 配置文件。当应用以Swoole方式运行时需要。
  *
- * 如果项目用Swoole运行，首先请配置服务的IP和端口，避免启动时与其他项目冲突。
- *
  * 用法：
  *
  *  $ composer require uniondrug/server
@@ -13,52 +11,47 @@
  */
 
 return [
-    'default'     => [
-        'host'       => 'http://0.0.0.0:8080',
+    'default'    => [
+        'host'       => 'http://0.0.0.0:8000', // 改成module分配好的端口号
         'class'      => \Uniondrug\Server\Servitization\Server\HTTPServer::class,
         'options'    => [
-            'pid_file'        => __DIR__ . '/../tmp/pid/server.pid',
-            'worker_num'      => 2,
-            'task_worker_num' => 1,
+            'pid_file'         => __DIR__ . '/../tmp/pid/server.pid',
+            'log_file'         => __DIR__ . '/../log/server.log',
+            'log_level'        => 0,
+            'worker_num'       => 1,
+            'task_worker_num'  => 2,
+            'max_request'      => 5000,
+            'task_max_request' => 5000,
         ],
-        'autoreload' => false,
+        'autoreload' => true,
         'processes'  => [
-            /**
-             * 定时任务进程，需要时开启
-             */
-            //\Uniondrug\Crontab\Processes\ExecProcess::class,
-            //\Uniondrug\Crontab\Processes\ManagerProcess::class,
         ],
         'listeners'  => [
             [
                 'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
-                'host'  => 'tcp://0.0.0.0:7080',
+                'host'  => 'tcp://0.0.0.0:7000', // 改成module分配好的端口号，首位换成7
             ],
-            /**
-             * TCP方式服务调用
-             */
-//            [
-//                'class' => \Uniondrug\Server\Servitization\Server\TCPServer::class,
-//                'host'  => 'tcp://0.0.0.0:9080',
-//            ],
+            [
+                'class' => \Uniondrug\Server\Servitization\Server\TCPServer::class,
+                'host'  => 'tcp://0.0.0.0:9000', // 改成module分配好的端口号，首位换成9
+            ],
         ],
     ],
-    'development' => [
-        'autoreload' => true,
-        'processes'  => [
-            \Uniondrug\Server\Processes\ReloadProcess::class,
+    'production' => [
+        'autoreload' => false,
+        'host'       => 'http://10.46.231.5:8000', // 改成module分配好的端口号
+        'options'    => [
+            'worker_num'      => 4,
+            'task_worker_num' => 4,
         ],
-    ],
-    'production'  => [
-        'host'      => 'http://0.0.0.0:8080',
-        'options'   => [
-            'worker_num'      => 8,
-            'task_worker_num' => 2,
-        ],
-        'listeners' => [
+        'listeners'  => [
             [
                 'class' => \Uniondrug\Server\Servitization\Server\ManagerServer::class,
-                'host'  => 'tcp://0.0.0.0:7080',
+                'host'  => 'tcp://10.46.231.5:7000', // 改成module分配好的端口号，首位换成7
+            ],
+            [
+                'class' => \Uniondrug\Server\Servitization\Server\TCPServer::class,
+                'host'  => 'tcp://10.46.231.5:9000', // 改成module分配好的端口号，首位换成9
             ],
         ],
     ],

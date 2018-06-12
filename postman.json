@@ -1,0 +1,6 @@
+{
+    "name" : "Postman Title",
+    "description" : "Description about Postman",
+    "host" : "prefix.module",
+    "auth" : "NO"
+}

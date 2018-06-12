@@ -9,7 +9,7 @@
 return [
     'default'    => [
         'debug'               => true, // 调试开关
-        'appName'             => env('APP_NAME', 'UniondrugSketch'), // 应用名称
+        'appName'             => 'rule.module', // 应用名称
         'appVersion'          => '1.0.0',
         'useAnnotationRouter' => true, // 是否启用注解路由
         'providers'           => [
@@ -23,19 +23,6 @@ return [
             \Uniondrug\Register\RegisterClientServiceProvider::class, // NameService客户端服务
             \Uniondrug\Trace\TraceClientServiceProvider::class, // 链路跟踪客户端服务
             \Uniondrug\ServiceSdk\SdkServiceProvider::class, // SDK 服务
-
-            /**
-             * 以下可选服务
-             */
-            //\Uniondrug\Cache\CacheServiceProvider::class, // 缓存服务 cache， 需安装 uniondrug/cache
-            //\Uniondrug\Redis\RedisServiceProvider::class, // Redis服务 redis，需安装 uniondrug/redis
-
-            /**
-             * 以下服务依赖swoole
-             */
-            //\Uniondrug\TcpClient\TcpClientServiceProvider::class, // TCP rpc客户端，需安装 uniondrug/tcp-clent
-            //\Uniondrug\Crontab\CrontabServiceProvider::class, // 定时任务服务，需安装 uniondrug/crontab
-
             /**
              * 应用内服务注册
              */
