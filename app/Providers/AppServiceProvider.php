@@ -12,6 +12,7 @@ namespace App\Providers;
 
 use Phalcon\Di\ServiceProviderInterface;
 use Phalcon\Text;
+use Uniondrug\ServiceSdk\ServiceSdk;
 
 /**
  * @package App\Providers
@@ -25,6 +26,9 @@ class AppServiceProvider implements ServiceProviderInterface
     {
         // Register services
         $this->registerServices($di);
+        $di->setShared('serviceSdk', function(){
+            return new ServiceSdk();
+        });
 
         // Other things
     }
