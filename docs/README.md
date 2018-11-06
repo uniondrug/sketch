@@ -22,6 +22,11 @@
     1. [Provider](./usages/provider.md)
     1. [Response](./usages/response.md)
 
+```bash
+
+composer create-project uniondrug/sketch sketch
+
+```
 
 
 ### 中间件

@@ -18,7 +18,9 @@ return [
     'default' => [
         'debug' => false,
         'appName' => 'sketch.module',
-        'appVersion' => '1.0.0',
+        'appVersion' => '2.0.0',
+        'dockerImage' => 'uniondrug:base',
+        'dockerMode' => 'swoole',
         'useAnnotationRouter' => true,
         'providers' => [
             ServiceServiceProvider::class,
@@ -31,5 +33,7 @@ return [
             AppServiceProvider::class
         ]
     ],
-    'production' => []
+    'production' => [
+        'appName' => 'production.sketch'
+    ]
 ];

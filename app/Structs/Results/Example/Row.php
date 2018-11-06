@@ -13,5 +13,13 @@ use Uniondrug\Structs\Struct;
  */
 class Row extends Struct
 {
-    use ExampleTrait;
+    /**
+     * @var int
+     */
+    public $id;
+    /**
+     * @var string
+     */
+    public $name;
+
 }

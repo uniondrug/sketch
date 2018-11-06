@@ -11,6 +11,7 @@ use App\Services\ExampleService;
 
 /**
  * @property ExampleService $exampleService
+ * @property $serviceSdk $serviceSdk
  * @package App\Services\Abstracts
  */
 trait ServiceTrait

@@ -13,12 +13,18 @@ class AddStruct extends Struct
 {
     /**
      * @var int
-     * @Validators(type=int,options={min:1,max:10})
+     * @validator(options={min:1,max:10},required)
      */
     public $id;
     /**
      * 只读属性
      * @var string
+     * @validator(empty,type=mobile)
      */
     public $name;
+    /**
+     * @var int
+     * @validator(options={min:1,max:100},required)
+     */
+    public $age;
 }
