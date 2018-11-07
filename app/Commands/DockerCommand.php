@@ -83,6 +83,10 @@ class DockerCommand extends Command
         return $this->append("\n");
     }
 
+    /**
+     * 设置基础镜像
+     * @return DockerCommand
+     */
     private function appendHeader()
     {
         $tpl = <<<'TMP'
@@ -103,46 +107,49 @@ TMP;
         return $this->append($tpl);
     }
 
+    /**
+     * 设置镜像环境变量
+     * @return DockerCommand
+     */
     private function appendEnvironments()
     {
         $name = $this->container->getConfig()->path('app.appName', 'sketch');
         $version = $this->container->getConfig()->path('app.appVersion', 'latest');
         $mode = $this->container->getConfig()->path('app.dockerMode', 'swoole');
-        $port = 80;
-        $host = $this->container->getConfig()->path('server.host', null);
-        if ($host && preg_match("/:(\d+)/", $host, $m)) {
-            $port = $m[1];
-        }
         $tpl = <<<'TMP'
 # 环境变量
-ENV DOCKER_MODE="{{DOCKER_MODE}}"
+ENV SERVICE_MODE="{{SERVICE_MODE}}"
 ENV SERVICE_NAME="{{SERVICE_NAME}}"
 ENV SERVICE_VERSION="{{SERVICE_VERSION}}"
-ENV SERVICE_PORT="{{SERVICE_PORT}}"
-
+ENV SERVICE_IP=""
+ENV SERVICE_PORT="80"
 # 端口与入口
 WORKDIR /uniondrug/app
-EXPOSE {{SERVICE_PORT}}
-# ENTRYPOINT ["/usr/local/bin/entrypoint"]
-# CMD ["start", "-e", "production"]
+EXPOSE 80
+ENTRYPOINT ["/usr/local/bin/entrypoint"]
+CMD ["start", "-e", "production"]
 TMP;
         $tpl = preg_replace([
-            "/\{\{DOCKER_MODE\}\}/",
+            "/\{\{SERVICE_MODE\}\}/",
             "/\{\{SERVICE_NAME\}\}/",
-            "/\{\{SERVICE_VERSION\}\}/",
-            "/\{\{SERVICE_PORT\}\}/",
+            "/\{\{SERVICE_VERSION\}\}/"
         ], [
             $mode,
             $name,
-            $version,
-            $port
+            $version
         ], $tpl);
         return $this->append($tpl);
     }
 
+    /**
+     * 拷入项目文件
+     * @return $this
+     */
     private function appendGitFiles()
     {
-        $this->append("# Copy application Directories and files");
+        $this->append("# 拷贝项目文件");
+        $this->append("# 1. 目录");
+        $this->append("# 2. 文件");
         $path = realpath($this->container->appPath().'/../');
         $d = dir($path);
         $di = [
@@ -175,10 +182,17 @@ TMP;
         return $this;
     }
 
+    /**
+     * 拷贝工具
+     * @return DockerCommand
+     */
     private function appendGitRepositories()
     {
         $tpl = <<<'TMP'
 # 应用仓库
+# 1. 补全项目目录
+# 2. Clone工具项目/github
+# 3. 变项属主
 RUN cd /uniondrug/app && mkdir log tmp && \
     cd /uniondrug/tmp && git clone {{APP_CTL}} . && git checkout master && \
     php install && \
@@ -193,6 +207,10 @@ TMP;
         return $this->append($tpl);
     }
 
+    /**
+     * 生成构建镜像脚本
+     * @return $this
+     */
     private function appendShellfile()
     {
         $tpl = <<<'TMP'
