@@ -1,82 +1,40 @@
-# uniondrug framework
+# sketch
 
-> UnionDrug微服务`MicroService`基础框架。
+1. `composer.json` - 第3方PHP运行扩展依赖
+1. `consul.json` - 注册Consul服务依赖
+1. `postman.json` - 导出文档依赖
 
-* PHP `7.1+`
-* Phalcon `3.2+`
 
-### how to?
+### 生成文档
+
+> 生成文档时, 包括`markdown`、`postman.json`、`SDK`扩展，位于项目的`docs`目录下。
+
 ```bash
-composer create-project uniondrug/sketch myProject
-```
-
-### Directory
-
-```text
-├── README.md
-├── app
-│   ├── Controllers
-│   │   ├── Abstracts
-│   │   │   └── Controller.php
-│   │   └── IndexController.php
-│   ├── Errors
-│   │   ├── Code.php
-│   │   └── Error.php
-│   ├── Logics
-│   │   ├── Abstracts
-│   │   │   └── Logic.php
-│   │   └── ExampleLogic.php
-│   ├── Models
-│   │   ├── Abstracts
-│   │   │   └── Model.php
-│   │   └── Example.php
-│   ├── Providers
-│   │   └── SimpleProvider.php
-│   ├── Services
-│   │   ├── Abstracts
-│   │   │   ├── Service.php
-│   │   │   └── ServiceTrait.php
-│   │   └── ExampleService.php
-│   └── Structs
-│       ├── Abstracts
-│       ├── ExampleStruct.php
-│       └── Results
-│           └── ExampleResult.php
-├── composer.json
-├── config
-│   ├── app.php
-│   ├── cache.php
-│   ├── database.php
-│   ├── exception.php
-│   ├── logger.php
-│   ├── middlewares.php
-│   ├── register.php
-│   ├── routes.php
-│   ├── server.php
-│   └── trace.php
-├── log
-├── public
-│   └── index.php
-└── tmp
+php console postman
 ```
 
 
-### 使用命令行
+### 构建镜像
 
-引入命令行工具（按需）
+> 构建镜像时, 脚本先在项目的根目录生成`Dockerfile`和`dockerfile.sh`二个文件，
+然后自动执行`dockerfile.sh`文件并生项目镜像；
+项目镜像的关键参数由配置文件`config/app.php`文件定义的如下字段。
 
+1. `app.dockerImage` - 基础镜像名称, 默认: `uniondrug:base`.
+1. `app.appName` - 项目镜像名称
+1. `app.appVersion` - 项目镜像版本
+
+*快速生成*
+
+```bash
+# 生成镜像
+php console docker
 ```
-$ composer require uniondrug/console
-$ php console config
+
+*手动生成*
+
+```bash
+# 手动生成镜像
+sh dockerfile.sh
 ```
 
-### 使用Swoole
-
-引入swoole应用服务器（按需）
-
-```
-$ composer require uniondrug/server
-$ cp vendor/uniondurg/server/server.php.example config/server.php
-$ cp vendor/uniondurg/server/exception.php.example config/exception.php
-$ php server start
-```
