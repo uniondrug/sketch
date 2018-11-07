@@ -127,7 +127,7 @@ ENV SERVICE_PORT="8080"
 WORKDIR /uniondrug/app
 EXPOSE 8080
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
-CMD ["start", "-e", "production"]
+CMD ["start"]
 TMP;
         $tpl = preg_replace([
             "/\{\{SERVICE_MODE\}\}/",
