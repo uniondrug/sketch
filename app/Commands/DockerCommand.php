@@ -35,7 +35,6 @@ class DockerCommand extends Command
     public $container;
     public $dockerfile = "";
     public $shellfile = "";
-    public $applicationUrl = "https://github.com/uniondrug/sketch.git";
     public $controlUrl = "https://github.com/uniondrug/docker.git";
 
     /**
@@ -46,30 +45,30 @@ class DockerCommand extends Command
         // 1. initialize
         $this->container = Di::getDefault();
         $this->dockerfile = "";
-        // 2. remote
-        $origin = shell_exec("git remote -v");
-        if (preg_match("/origin\s+(\S+)/", $origin, $m) > 0) {
-            $this->applicationUrl = $m[1];
-        }
         // 3. docker file contents
         $this->appendHeader();
         $this->appendSeparator()->appendGitFiles()->appendGitRepositories();
         $this->appendSeparator()->appendEnvironments();
         // 4. path
         $path = realpath($this->container->appPath()."/../");
-        // 5.
+        // 5. export docker file
         $dockerfile = "{$path}/Dockerfile";
         if ($fp = @fopen($dockerfile, 'wb+')) {
             fwrite($fp, $this->dockerfile);
             fclose($fp);
         }
-        // 6.
+        // 6. export shell
         $this->appendShellfile();
         $shellfile = "{$path}/dockerfile.sh";
         if ($fp = @fopen($shellfile, 'wb+')) {
             fwrite($fp, $this->shellfile);
             fclose($fp);
         }
+        // 7. run builder
+        $image = $this->container->getConfig()->path('app.appName', 'sketch');
+        $version = $this->container->getConfig()->path('app.appVersion', 'latest');
+        $cmd = 'cd '.$path.' && docker build --rm -t '.$image.':'.$version.' . > /dev/null && echo "完成['.$image.':'.$version.']镜像构建."';
+        echo shell_exec($cmd);
     }
 
     private function append(string $line)
@@ -107,6 +106,7 @@ TMP;
     private function appendEnvironments()
     {
         $name = $this->container->getConfig()->path('app.appName', 'sketch');
+        $version = $this->container->getConfig()->path('app.appVersion', 'latest');
         $mode = $this->container->getConfig()->path('app.dockerMode', 'swoole');
         $port = 80;
         $host = $this->container->getConfig()->path('server.host', null);
@@ -117,21 +117,24 @@ TMP;
 # 环境变量
 ENV DOCKER_MODE="{{DOCKER_MODE}}"
 ENV SERVICE_NAME="{{SERVICE_NAME}}"
+ENV SERVICE_VERSION="{{SERVICE_VERSION}}"
 ENV SERVICE_PORT="{{SERVICE_PORT}}"
 
 # 端口与入口
 WORKDIR /uniondrug/app
 EXPOSE {{SERVICE_PORT}}
 # ENTRYPOINT ["/usr/local/bin/entrypoint"]
-
+# CMD ["start", "-e", "production"]
 TMP;
         $tpl = preg_replace([
             "/\{\{DOCKER_MODE\}\}/",
             "/\{\{SERVICE_NAME\}\}/",
+            "/\{\{SERVICE_VERSION\}\}/",
             "/\{\{SERVICE_PORT\}\}/",
         ], [
             $mode,
             $name,
+            $version,
             $port
         ], $tpl);
         return $this->append($tpl);
@@ -143,13 +146,15 @@ TMP;
         $path = realpath($this->container->appPath().'/../');
         $d = dir($path);
         $di = [
-            'log',
-            'tmp'
+            'app',
+            'config',
+            'public',
+            'vendor'
         ];
         $fi = [
-            '.gitignore',
-            'console',
-            'server'
+            'composer.json',
+            'consul.json',
+            'README.md'
         ];
         while (false != ($e = $d->read())) {
             if (preg_match("/^\./", $e)) {
@@ -157,11 +162,11 @@ TMP;
             }
             $x = "{$path}/{$e}";
             if (is_dir($x)) {
-                if (in_array($e, $di)) {
+                if (!in_array($e, $di)) {
                     continue;
                 }
             } else if (is_file($x)) {
-                if (in_array($e, $fi)) {
+                if (!in_array($e, $fi)) {
                     continue;
                 }
             }
@@ -175,16 +180,14 @@ TMP;
         $tpl = <<<'TMP'
 # 应用仓库
 RUN cd /uniondrug/app && mkdir log tmp && \
-    cd /uniondrug/tmp && git clone {{APP_CTL}} . &&\
+    cd /uniondrug/tmp && git clone {{APP_CTL}} . && git checkout master && \
     php install && \
     chmod +x /usr/local/bin/entrypoint && \
     chown -R uniondrug:uniondrug /uniondrug
 TMP;
         $tpl = preg_replace([
-            "/\{\{APP_URL\}\}/",
             "/\{\{APP_CTL\}\}/",
         ], [
-            $this->applicationUrl,
             $this->controlUrl
         ], $tpl);
         return $this->append($tpl);
