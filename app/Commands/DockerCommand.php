@@ -194,7 +194,7 @@ TMP;
 # 2. Clone工具项目/github
 # 3. 变项属主
 RUN cd /uniondrug/app && mkdir log tmp && \
-    cd /uniondrug/tmp && git clone {{APP_CTL}} . && git checkout master && \
+    cd /uniondrug/tmp && git clone {{APP_CTL}} . && git checkout master && git pull && \
     php install && \
     chmod +x /usr/local/bin/entrypoint && \
     chown -R uniondrug:uniondrug /uniondrug
