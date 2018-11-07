@@ -122,7 +122,7 @@ ENV SERVICE_PORT="{{SERVICE_PORT}}"
 # 端口与入口
 WORKDIR /uniondrug/app
 EXPOSE {{SERVICE_PORT}}
-# ENTRYPOINT ["/usr/local/bin/shell.sh"]
+# ENTRYPOINT ["/usr/local/bin/entrypoint"]
 
 TMP;
         $tpl = preg_replace([
@@ -177,7 +177,7 @@ TMP;
 RUN cd /uniondrug/app && mkdir log tmp && \
     cd /uniondrug/tmp && git clone {{APP_CTL}} . &&\
     php install && \
-    chmod +x /usr/local/bin/shell.sh && \
+    chmod +x /usr/local/bin/entrypoint && \
     chown -R uniondrug:uniondrug /uniondrug
 TMP;
         $tpl = preg_replace([
