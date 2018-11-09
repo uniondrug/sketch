@@ -113,11 +113,23 @@ TMP;
      */
     private function appendEnvironments()
     {
+        // 1. 基础变量
         $name = $this->container->getConfig()->path('app.appName', 'sketch');
         $version = $this->container->getConfig()->path('app.appVersion', 'latest');
         $mode = $this->container->getConfig()->path('app.dockerMode', 'swoole');
+        // 2. GIT参数
+        $gitInfo = shell_exec('git remote -v');
+        if (preg_match("/origin\s+(\S+)/", $gitInfo, $m)){
+            $gitUrl = $m[1];
+            $gitBranch = shell_exec("git branch | grep '\*' | awk '{print \$2}'");
+        } else {
+            $gitUrl = $gitBranch = '';
+        }
+
         $tpl = <<<'TMP'
 # 环境变量
+ENV REPOSITORY_URL="{{REPOSITORY_URL}}"
+ENV REPOSITORY_BRANCH="{{REPOSITORY_BRANCH}}"
 ENV SERVICE_MODE="{{SERVICE_MODE}}"
 ENV SERVICE_NAME="{{SERVICE_NAME}}"
 ENV SERVICE_VERSION="{{SERVICE_VERSION}}"
@@ -132,11 +144,15 @@ TMP;
         $tpl = preg_replace([
             "/\{\{SERVICE_MODE\}\}/",
             "/\{\{SERVICE_NAME\}\}/",
-            "/\{\{SERVICE_VERSION\}\}/"
+            "/\{\{SERVICE_VERSION\}\}/",
+            "/\{\{REPOSITORY_URL\}\}/",
+            "/\{\{REPOSITORY_BRANCH\}\}/",
         ], [
             $mode,
             $name,
-            $version
+            $version,
+            trim($gitUrl),
+            trim($gitBranch),
         ], $tpl);
         return $this->append($tpl);
     }
