@@ -1,16 +1,17 @@
-# ignore
+#
+# ignore directories & files
+#
 
-
-# directories
 .idea
+.DS_Store
+log/
 !log/.gitkeep
+tmp/
 !tmp/.gitkeep
 vendor
 
-
-# files
-!.gitignore
-!composer.json
-!consul.json
-!postman.json
-!README.md
+composer.lock
+console
+Dockerfile
+dockerfile.sh
+server
