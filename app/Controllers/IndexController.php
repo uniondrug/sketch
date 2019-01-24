@@ -6,9 +6,6 @@
 namespace App\Controllers;
 
 use App\Controllers\Abstracts\Base;
-use App\Logics\Example\AddLogic;
-use App\Models\Example;
-use Uniondrug\ServiceSdk\ServiceSdk;
 
 /**
  * @package App\Controllers
@@ -17,6 +14,7 @@ use Uniondrug\ServiceSdk\ServiceSdk;
 class IndexController extends Base
 {
     /**
+     * @ignore
      * @Route("/index")
      */
     public function indexAction()

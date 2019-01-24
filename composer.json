@@ -19,7 +19,7 @@
         "uniondrug/http-client" : "^2.0",
         "uniondrug/register" : "^2.0",
         "uniondrug/service" : "^2.0",
-        "uniondrug/service-sdk" : "^1.0",
+        "uniondrug/service-sdk" : "2.x-dev",
         "uniondrug/structs" : "^2.0",
         "uniondrug/validation" : "^2.0",
         "uniondrug/phar" : "^1.0"

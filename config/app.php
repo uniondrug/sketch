@@ -24,6 +24,7 @@ return [
             ServiceServiceProvider::class,
             HttpClientServiceProvider::class,
             ValidationServiceProvider::class,
+            SdkServiceProvider::class,
             RegisterClientServiceProvider::class,
             SdkServiceProvider::class,
             AppServiceProvider::class
