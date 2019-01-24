@@ -5,16 +5,10 @@
 return [
     'default' => [
         'middlewares' => [],
-        'global' => [
-            'cors',
-            'favicon',
-            'trace',
-        ],
-        'globalAfter' => [
-            'powered',
-        ],
+        'global' => [],
+        'globalAfter' => [],
         'cache' => [
-            'lifetime' => 60,
+            'lifetime' => 60
         ],
         'powered_by' => 'Uinondrug'
     ]

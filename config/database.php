@@ -10,16 +10,43 @@ return [
     'default' => [
         'adapter' => 'mysql',
         'debug' => false,
-        'useSlave' => true,
+        'useSlave' => false,
         'interval' => 0,
         'connection' => [
-            'host' => 'localhost',
-            'port' => 3306,
-            'username' => 'root',
-            'password' => '',
             'dbname' => 'test',
             'charset' => 'utf8'
         ]
     ],
-    'production' => []
+    'development' => [
+        'connection' => [
+            'host' => 'localhost',
+            'port' => 3306,
+            'username' => 'root',
+            'password' => ''
+        ]
+    ],
+    'testing' => [
+        'connection' => [
+            'host' => 'localhost',
+            'port' => 3306,
+            'username' => 'root',
+            'password' => ''
+        ]
+    ],
+    'release' => [
+        'connection' => [
+            'host' => 'localhost',
+            'port' => 3306,
+            'username' => 'root',
+            'password' => ''
+        ]
+    ],
+    'production' => [
+        'connection' => [
+            'host' => 'localhost',
+            'port' => 3306,
+            'username' => 'root',
+            'password' => ''
+        ]
+    ]
 ];

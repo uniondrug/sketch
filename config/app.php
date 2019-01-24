@@ -7,11 +7,9 @@
  */
 use App\Providers\AppServiceProvider;
 use Uniondrug\HttpClient\HttpClientServiceProvider;
-use Uniondrug\Middleware\MiddlewareServiceProvider;
 use Uniondrug\Register\RegisterClientServiceProvider;
 use Uniondrug\Service\ServiceServiceProvider;
 use Uniondrug\ServiceSdk\SdkServiceProvider;
-use Uniondrug\Trace\TraceClientServiceProvider;
 use Uniondrug\Validation\ValidationServiceProvider;
 
 return [
@@ -25,15 +23,10 @@ return [
         'providers' => [
             ServiceServiceProvider::class,
             HttpClientServiceProvider::class,
-            MiddlewareServiceProvider::class,
             ValidationServiceProvider::class,
             RegisterClientServiceProvider::class,
-            TraceClientServiceProvider::class,
             SdkServiceProvider::class,
             AppServiceProvider::class
         ]
-    ],
-    'production' => [
-        'appName' => 'production.sketch'
     ]
 ];

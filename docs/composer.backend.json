@@ -17,6 +17,7 @@
     "require" : {
         "uniondrug/framework" : "^2.0",
         "uniondrug/http-client" : "^2.0",
+        "uniondrug/middleware" : "^2.0",
         "uniondrug/register" : "^2.0",
         "uniondrug/service" : "^2.0",
         "uniondrug/service-sdk" : "^1.0",
