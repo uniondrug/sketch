@@ -1,9 +1,4 @@
 {
     "name" : "Sketch",
-    "description" : "Description about Sketch",
-    "host" : "sketch.module",
-    "auth" : "NO",
-    "sdk" : "sketch",
-    "sdkService" : "sketch.module",
-    "sdkLink" : "https://uniondrug.coding.net/p/module.sketch/git/tree/development/app"
+    "description" : "Description about Sketch"
 }
