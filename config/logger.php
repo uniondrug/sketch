@@ -1,9 +1,7 @@
 <?php
-use Phalcon\Logger;
-
 return [
     'default' => [
         'splitDir' => true,
-        'level' => Logger::DEBUG
+        'level' => \Phalcon\Logger::DEBUG
     ]
 ];

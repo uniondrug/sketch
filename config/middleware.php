@@ -1,7 +1,4 @@
 <?php
-/**
- * middlewares.php
- */
 return [
     'default' => [
         'middlewares' => [],

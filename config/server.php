@@ -1,8 +1,6 @@
 <?php
 return [
-    'default' => [
-        'host' => '0.0.0.0:8000'
-    ],
+    'default' => [],
     'development' => [
         'host' => '0.0.0.0:18000'
     ],
