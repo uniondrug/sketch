@@ -11,7 +11,3 @@ tmp/
 vendor
 
 composer.lock
-console
-Dockerfile
-dockerfile.sh
-server

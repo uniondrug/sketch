@@ -6,9 +6,9 @@
 namespace App\Commands;
 
 /**
- * PHAR/构建文档
+ * 上传KV/FPM模式
  * @package App\Commands
  */
-class PharCommand extends \Uniondrug\Phar\Commands\PharCommand
+class KvUploadCommand extends \Uniondrug\Framework\Commands\KvUploadCommand
 {
 }

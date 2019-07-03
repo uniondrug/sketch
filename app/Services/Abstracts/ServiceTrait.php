@@ -1,7 +1,7 @@
 <?php
 /**
  * @author wsfuyibing <websearch@163.com>
- * @date   2019-01-24
+ * @date   2019-07-03
  */
 namespace App\Services\Abstracts;
 
@@ -23,11 +23,11 @@ trait ServiceTrait
     public function getSwoole()
     {
         /**
-         * @var Container $di
+         * @var Container $container
          */
-        $di = $this->di;
-        $swoole = $di->getShared('server');
-        if ($swoole instanceof \Swoole\Server) {
+        $container = $this->di;
+        $swoole = $container->getShared('server');
+        if ($swoole instanceof Http) {
             return $swoole;
         }
         throw new \Exception("only work with swoole mode");

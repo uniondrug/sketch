@@ -16,9 +16,7 @@ return [
     'default' => [
         'debug' => false,
         'appName' => 'sketch.module',
-        'appVersion' => '2.0.0',
-        'dockerImage' => 'uniondrug:base',
-        'dockerMode' => 'swoole',
+        'appVersion' => '3.0.0',
         'useAnnotationRouter' => true,
         'providers' => [
             ServiceServiceProvider::class,

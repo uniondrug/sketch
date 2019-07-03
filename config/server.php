@@ -1,16 +1,11 @@
 <?php
 return [
-    'default' => [],
-    'development' => [
-        'host' => '0.0.0.0:18000'
-    ],
-    'testing' => [
-        'host' => '0.0.0.0:8000'
-    ],
-    'release' => [
+    'default' => [
+        'class' => \App\Servers\Http::class,
         'host' => 'eth0:8000'
     ],
-    'production' => [
-        'host' => 'eth0:8000'
-    ]
+    'development' => [],
+    'testing' => [],
+    'release' => [],
+    'production' => []
 ];
